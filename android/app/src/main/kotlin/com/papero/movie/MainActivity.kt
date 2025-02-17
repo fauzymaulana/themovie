@@ -1,4 +1,4 @@
-package com.example.movie_list
+package com.papero.movie
 
 import io.flutter.embedding.android.FlutterActivity
 
