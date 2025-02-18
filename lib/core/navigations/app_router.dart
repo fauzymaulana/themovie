@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:watch_me/core/navigations/app_routes.dart';
-import 'package:watch_me/dashboard/dashboard_screen.dart';
-import 'package:watch_me/starter/splash/splash_screen.dart';
+import 'package:watch_me/presentation/dashboard/dashboard_screen.dart';
+import 'package:watch_me/presentation/dashboard/splash/splash_screen.dart';
 
 import 'enums/main_routes_enum.dart';
 import 'provider/navigation_provider.dart';
