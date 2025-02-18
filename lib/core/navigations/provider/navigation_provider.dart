@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// Enum to represent the app states for navigation
-enum AppState { splash, dashboard }
+import '../enums/main_routes_enum.dart';
 
 /// Notifier to handle the navigation state
 /// 

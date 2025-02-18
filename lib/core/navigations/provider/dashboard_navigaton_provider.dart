@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-enum BottomNavState { home, bookmark, account }
+import '../enums/dashboard_routes_enum.dart';
 
 class BottomNavigationProvider extends StateNotifier<BottomNavState> {
   BottomNavigationProvider() : super(BottomNavState.home);
@@ -11,7 +11,7 @@ class BottomNavigationProvider extends StateNotifier<BottomNavState> {
 
   void onTabTapped(int index) {
     if (index >= 0 && index < BottomNavState.values.length) {
-      changeTab(BottomNavState.values[index]);
+      state = BottomNavState.values[index];
     }
   }
 }

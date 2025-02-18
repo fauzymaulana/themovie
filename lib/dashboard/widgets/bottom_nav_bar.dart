@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/navigations/dashboard_navigaton_provider.dart';
+import '../../core/navigations/provider/dashboard_navigaton_provider.dart';
 
 class BottomNavBar extends ConsumerWidget {
   const BottomNavBar({super.key});
@@ -12,10 +12,9 @@ class BottomNavBar extends ConsumerWidget {
     final notifier = ref.read(bottomNavigationProvider.notifier);
 
     return BottomNavigationBar(
-      currentIndex: BottomNavState.values.indexOf(currentTab),
+      currentIndex: currentTab.index,
       onTap: (index) {
-        debugPrint('Tab tapped: ${BottomNavState.values[index]}');
-       notifier.changeTab(BottomNavState.values[index]);
+       notifier.onTabTapped(index);
       },
       items: const [
         BottomNavigationBarItem(
