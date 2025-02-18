@@ -1,5 +1,5 @@
-name: movie_list
-description: "A new Flutter project."
+name: watch_me
+description: "This app will be help you to find the bese movie for you"
 publish_to: 'none'
 version: 0.1.0
 
@@ -9,11 +9,58 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  json_serializable: ^6.9.0
+  build_runner: ^2.4.13
+  riverpod: ^2.6.1
+  flutter_riverpod: ^2.6.1
+  # flutter_bloc: ^8.1.6
+  go_router: ^7.0.0
+  flutter_svg: ^2.0.15
+  flutter_native_splash: ^2.4.3
+  device_info_plus: ^11.1.1
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
+  # get_it: ^7.6.0
+  url_launcher: ^6.3.1
+  cupertino_icons: ^1.0.0
+  json_annotation: ^4.8.1
+  equatable: ^2.0.5
+  dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  json_serializable: ^6.7.1
 
 flutter:
+  generate: true
   uses-material-design: true
+  assets:
+    - assets/images/
+    # - assets/icons/
+    - assets/fonts/
+  fonts:
+    - family: Jost
+      fonts:
+        - asset: assets/fonts/jost_black_weight900.ttf
+        - asset: assets/fonts/jost_blackitalic_weight900.ttf
+        - asset: assets/fonts/jost_bold_weight700.ttf
+        - asset: assets/fonts/jost_bolditalic_weight700.ttf
+        - asset: assets/fonts/jost_extrabold_weight800.ttf
+        - asset: assets/fonts/jost_extrabolditalic_weight800.ttf
+        - asset: assets/fonts/jost_extralight_weight200.ttf
+        - asset: assets/fonts/jost_extralightitalic_weight200.ttf
+        - asset: assets/fonts/jost_light_weight300.ttf
+        - asset: assets/fonts/jost_lightitalic_weight300.ttf
+        - asset: assets/fonts/jost_medium_weight500.ttf
+        - asset: assets/fonts/jost_mediumitalic_weight500.ttf
+        - asset: assets/fonts/jost_regular_weight400.ttf
+        - asset: assets/fonts/jost_regularitalic_weight400.ttf
+        - asset: assets/fonts/jost_semibold_weight600.ttf
+        - asset: assets/fonts/jost_semibolditalic_weight600.ttf
+        - asset: assets/fonts/jost_thin_weight100.ttf
+        - asset: assets/fonts/jost_thinitalic_weight100.ttf

@@ -1,0 +1,11 @@
+{
+    "language": "Indonesia",
+    "@language": {
+        "description": "The Current Language"
+    },
+    "greeting": "Halo ",
+    "@greeting": {
+        "description": "A Greeting"
+    }
+}
+
