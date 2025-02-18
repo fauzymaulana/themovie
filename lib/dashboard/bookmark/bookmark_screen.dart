@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends ConsumerWidget {
-  const HomeScreen({super.key});
+class BookmarkScreen extends ConsumerWidget {
+  const BookmarkScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -11,13 +12,14 @@ class HomeScreen extends ConsumerWidget {
       body: SafeArea(
         child: SizedBox.expand(
           child: Container(
-            color: Colors.red,
+            color: Colors.lightGreen,
             child: Center(
-              child: Text("Home Screen"),
+              child: Text("Bookmark Screen"),
             ),
           ),
         ),
       ),
-    );
+    ); 
   }
+  
 }
