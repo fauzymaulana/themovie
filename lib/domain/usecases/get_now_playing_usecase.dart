@@ -19,7 +19,6 @@ class GetNowPlayingUsecaseImpl implements GetNowPlayingUsecase {
   Future<ResultState<BasePaginate<MovieEntity>>> execute() async {
     try {
       final response = await _nowPlayingMovieRepository.getNowPlayingApi();
-      // final result = response.toBasePaginate((results) => results?.map((e) => e.toMovieEntity()).toList());
       final result =  BasePaginate<MovieEntity>(
         dates: response.dates?.toDateEntity(),
         page: response.page,
