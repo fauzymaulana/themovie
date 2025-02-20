@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:watch_me/presentation/dashboard/widgets/item_movie_vertical.dart';
 import 'package:watch_me/presentation/dashboard/widgets/movie_horizontal.dart';
 
 import 'home_provider.dart';
@@ -9,7 +10,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final nowPlayProvider = nowPlayingProvider;
+    final nowPlayProvider = nowPlayingMovieProvider;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -18,8 +19,10 @@ class HomeScreen extends ConsumerWidget {
             children: [
               MovieHorizontal(
                 title: "Now Playing",
-                provider: nowPlayProvider,
+                movieProvider: nowPlayProvider,
               ),
+
+              ItemMovieVertical()
             ],
           )
         ),

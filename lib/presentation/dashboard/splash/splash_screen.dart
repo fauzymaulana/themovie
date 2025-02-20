@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/navigations/provider/navigation_provider.dart';
+import 'splash_provider.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -39,6 +40,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    _fetchGenres();
     _setupNavigation();
   }
 
@@ -48,6 +50,12 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         ref.read(navigationProvider.notifier).navigateToDashboard();
       }
     });
+  }
+
+  Future<void> _fetchGenres() async {
+    await Future.microtask(
+      () => ref.read(getGenresProvider.notifier).getGenres()
+    );
   }
 
   @override
