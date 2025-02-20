@@ -4,6 +4,8 @@
 class AppRoutes {
   static const String SPLASH = '/splash';
   static const String DASHBOARD = '/dashboard';
+  static const String EXPLORE = '/explore';
+  static const String DETAIL = '/detail';
 
   static const Map<String, String> DASHBOARD_ROUTES = {
     '/home': 'home',
