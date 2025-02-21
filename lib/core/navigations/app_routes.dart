@@ -6,7 +6,7 @@ class AppRoutes {
   static const String DASHBOARD = '/dashboard';
   static const String BOOKMARK = '/bookmark';
   static const String EXPLORE = '/explore';
-  static const String DETAIL = 'detail';
+  static const String DETAIL = '/detail';
 
   static const Map<String, String> DASHBOARD_ROUTES = {
     '/home': 'home',

@@ -49,8 +49,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void _setupNavigation() {
     Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
-        // ref.read(navigationProvider.notifier).navigateToDashboard();
-
         GoRouter.of(context).go(AppRoutes.DASHBOARD);
       }
     });

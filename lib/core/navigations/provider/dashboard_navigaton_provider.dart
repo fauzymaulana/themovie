@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../app_routes.dart';
-import '../enums/dashboard_routes_enum.dart';
 
 class BottomNavigationProvider extends StateNotifier<int> {
   BottomNavigationProvider() : super(0);
@@ -18,16 +17,6 @@ class BottomNavigationProvider extends StateNotifier<int> {
         break;
     }
   }
-
-  // void changeTab(BottomNavState tab) {
-  //   state = tab;
-  // }
-
-  // void onTabTapped(int index) {
-  //   if (index >= 0 && index < BottomNavState.values.length) {
-  //     state = BottomNavState.values[index];
-  //   }
-  // }
 }
 
 final bottomNavigationProvider = StateNotifierProvider<BottomNavigationProvider, int>((ref) => BottomNavigationProvider());

@@ -52,8 +52,6 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
   @override
   Widget build(BuildContext context) {
 
-    // final notifier = ref.read(navigationProvider.notifier);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -138,10 +136,7 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
   }
 
   void _onMovieTapped(MovieEntity movie) {
-    debugPrint("Di klik ${movie.title} idnya adalah ${movie.id}");
-    // notifier.navigateToDetail(movie.id.toString());
-    GoRouter.of(context).go('/${AppRoutes.DETAIL}/${movie.id.toString()}');
-    // GoRouter.of(context).go('${AppRoutes.DASHBOARD}/${AppRoutes.DETAIL}/${movie.id.toString()}');
+    GoRouter.of(context).go('${AppRoutes.DETAIL}/${movie.id.toString()}');
   }
   
 }
