@@ -120,6 +120,7 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
     return SizedBox(
       height: 300,
       child: ListView.builder(
+        key: PageStorageKey('horizontal-list'),
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         itemCount: movies.length.clamp(0, 6),
@@ -139,7 +140,8 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
   void _onMovieTapped(MovieEntity movie) {
     debugPrint("Di klik ${movie.title} idnya adalah ${movie.id}");
     // notifier.navigateToDetail(movie.id.toString());
-    GoRouter.of(context).go('${AppRoutes.DETAIL}/${movie.id.toString()}');
+    // GoRouter.of(context).go('${AppRoutes.DETAIL}/${movie.id.toString()}');
+    GoRouter.of(context).go('${AppRoutes.DASHBOARD}/${AppRoutes.DETAIL}/${movie.id.toString()}');
   }
   
 }
