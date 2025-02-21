@@ -53,10 +53,37 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 //   );
                 // },
                 builder: (context, state) => const HomeScreen(),
-                routes: [
-                  GoRoute(
-                    path: 'detail/:movieId',
-                    pageBuilder: (context, state) {
+                // routes: [
+                //   GoRoute(
+                //     path: 'detail/:movieId',
+                //     pageBuilder: (context, state) {
+                //       final movieId = state.pathParameters['movieId'];
+                //       return EnterExitRouteTransition(
+                //         enterPage: ExploreMovieScreen(movieId: movieId ?? ""), 
+                //         exitPage: const HomeScreen(),
+                //         key: state.pageKey
+                //       );
+                //       // return SlidePageTransition(
+                //       //   child: ExploreMovieScreen(movieId: movieId ?? ""),
+                //       //   direction: SlideDirection.forward,
+                //       //   key: state.pageKey,
+                //       // );
+                //     }
+                //   )
+                // ]
+              )
+            ]),
+            StatefulShellBranch(routes: [
+              GoRoute(
+                path: AppRoutes.BOOKMARK,
+                builder: (context, state) => const BookmarkScreen(),
+              )
+            ]),
+          ]),
+      GoRoute(
+          path: '${AppRoutes.DETAIL}/:movieId',
+          // parentNavigatorKey: _rootNavigatorKey,
+          pageBuilder: (context, state) {
                       final movieId = state.pathParameters['movieId'];
                       return EnterExitRouteTransition(
                         enterPage: ExploreMovieScreen(movieId: movieId ?? ""), 
@@ -69,67 +96,40 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                       //   key: state.pageKey,
                       // );
                     }
-                  )
-                ]
-              )
-            ]),
-            StatefulShellBranch(routes: [
-              GoRoute(
-                path: AppRoutes.BOOKMARK,
-                builder: (context, state) => const BookmarkScreen(),
-              )
-            ]),
-          ]),
-      // GoRoute(
-      //     path: '${AppRoutes.DETAIL}/:movieId',
-      //     // parentNavigatorKey: _rootNavigatorKey,
-      //     pageBuilder: (context, state) {
-      //                 final movieId = state.pathParameters['movieId'];
-      //                 return EnterExitRouteTransition(
-      //                   enterPage: ExploreMovieScreen(movieId: movieId ?? ""), 
-      //                   exitPage: const HomeScreen(),
-      //                   key: state.pageKey
-      //                 );
-      //                 // return SlidePageTransition(
-      //                 //   child: ExploreMovieScreen(movieId: movieId ?? ""),
-      //                 //   direction: SlideDirection.forward,
-      //                 //   key: state.pageKey,
-      //                 // );
-      //               }
-      //     // pageBuilder: (context, state) {
-      //     //   final _movieId = state.pathParameters['movieId'];
+          // pageBuilder: (context, state) {
+          //   final _movieId = state.pathParameters['movieId'];
 
-      //     //   // return SlidePageTransition(
-      //     //   //   child: ExploreMovieScreen(movieId: _movieId ?? ""), 
-      //     //   //   direction: SlideDirection.forward,
-      //     //   //   key: state.pageKey
-      //     //   // );
+          //   // return SlidePageTransition(
+          //   //   child: ExploreMovieScreen(movieId: _movieId ?? ""), 
+          //   //   direction: SlideDirection.forward,
+          //   //   key: state.pageKey
+          //   // );
 
-      //     //   return CustomTransitionPage(
-      //     //     key: state.pageKey,
-      //     //     child: ExploreMovieScreen(
-      //     //     movieId: _movieId ?? "",
-      //     //   ), 
-      //     //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      //     //       const begin = Offset(1.0, 0.0);
-      //     //       const end = Offset.zero;
-      //     //       const curve = Curves.easeInOut;
+          //   return CustomTransitionPage(
+          //     key: state.pageKey,
+          //     child: ExploreMovieScreen(
+          //     movieId: _movieId ?? "",
+          //   ), 
+          //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          //       const begin = Offset(1.0, 0.0);
+          //       const end = Offset.zero;
+          //       const curve = Curves.easeInOut;
                 
 
-      //     //       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-      //     //       var offsetAnimation = animation.drive(tween);
+          //       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          //       var offsetAnimation = animation.drive(tween);
 
-      //     //       return SlideTransition(position: offsetAnimation, child: child);
-      //     //     },
-      //     //     );
-      //     // },
-      //     // builder: (context, state) {
-      //     //   final _movieId = state.pathParameters['movieId'];
-      //     //   return ExploreMovieScreen(
-      //     //     movieId: _movieId ?? "",
-      //     //   );
-      //     // })
-      // )
+          //       return SlideTransition(position: offsetAnimation, child: child);
+          //     },
+          //     );
+          // },
+          // builder: (context, state) {
+          //   final _movieId = state.pathParameters['movieId'];
+          //   return ExploreMovieScreen(
+          //     movieId: _movieId ?? "",
+          //   );
+          // })
+      )
     ],
     // redirect: (context, state) {
     //   switch (appState) {
