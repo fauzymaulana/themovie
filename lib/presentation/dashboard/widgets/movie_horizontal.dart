@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:watch_me/core/config/theme/app_colors.dart';
 import 'package:watch_me/core/config/theme/app_typography.dart';
+import 'package:watch_me/core/navigations/app_routes.dart';
 import 'package:watch_me/presentation/dashboard/widgets/card_horizontal_movie.dart';
 import 'package:watch_me/presentation/dashboard/widgets/circular_border_button.dart';
 
@@ -50,14 +52,14 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
   @override
   Widget build(BuildContext context) {
 
-    final notifier = ref.read(navigationProvider.notifier);
+    // final notifier = ref.read(navigationProvider.notifier);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildHeader(),
         SizedBox(height: 16.0),
-        _buildMovieList(notifier),
+        _buildMovieList(),
       ],
     );
   }
@@ -88,13 +90,13 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
     );
   }
 
-  Widget _buildMovieList(NavigationNotifier notifier) {
+  Widget _buildMovieList() {
     return Consumer(
       builder: (context, ref, child) {
         final movieState = ref.watch(widget.movieProvider);
 
         if (movieState is Success<BasePaginate<MovieEntity>>) {
-          return _buildSuccessContent(movieState.data, notifier);
+          return _buildSuccessContent(movieState.data);
         } 
         else if (movieState is Error<BasePaginate<MovieEntity>>) {
           return Center(child: Text(movieState.message.toString()));
@@ -109,7 +111,7 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
     );
   }
 
-  Widget _buildSuccessContent(BasePaginate<MovieEntity> data, NavigationNotifier notifier) {
+  Widget _buildSuccessContent(BasePaginate<MovieEntity> data) {
     final movies = data.results;
     if (movies == null || movies.isEmpty) {
       return const SizedBox.shrink();
@@ -126,7 +128,7 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
           return CardHorizontalMovie(
             movie: movie,
             onTap: (movie){
-              _onMovieTapped(movie, notifier);
+              _onMovieTapped(movie);
             },
           );
         },
@@ -134,9 +136,10 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
     );
   }
 
-  void _onMovieTapped(MovieEntity movie, NavigationNotifier notifier) {
+  void _onMovieTapped(MovieEntity movie) {
     debugPrint("Di klik ${movie.title} idnya adalah ${movie.id}");
-    notifier.navigateToDetail(movie.id.toString());
+    // notifier.navigateToDetail(movie.id.toString());
+    GoRouter.of(context).go('${AppRoutes.DETAIL}/${movie.id.toString()}');
   }
   
 }

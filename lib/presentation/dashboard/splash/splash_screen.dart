@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:watch_me/core/navigations/app_routes.dart';
 
 import '../../../core/navigations/provider/navigation_provider.dart';
 import 'splash_provider.dart';
@@ -47,7 +49,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void _setupNavigation() {
     Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
-        ref.read(navigationProvider.notifier).navigateToDashboard();
+        // ref.read(navigationProvider.notifier).navigateToDashboard();
+
+        GoRouter.of(context).go(AppRoutes.DASHBOARD);
       }
     });
   }

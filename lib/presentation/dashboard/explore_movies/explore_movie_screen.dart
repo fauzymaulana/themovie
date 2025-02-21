@@ -1,26 +1,105 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:watch_me/core/navigations/app_routes.dart';
 
-class ExploreMovieScreen extends ConsumerWidget {
+import '../../../core/navigations/provider/navigation_provider.dart';
+
+class ExploreMovieScreen extends ConsumerStatefulWidget {
   final String movieId;
   const ExploreMovieScreen({
     super.key,
     required this.movieId
     });
+    
+      @override
+      ConsumerState<ConsumerStatefulWidget> createState() {
+    return _ExploreMovieScreenState();
+      }
 
+  // @override
+  // Widget build(BuildContext context, WidgetRef ref) {
+  //   // final notifier = ref.read(navigationProvider.notifier);
+    
+  //   return PopScope(
+  //     canPop: true,
+  //     child: Scaffold(
+  //       backgroundColor: Colors.red[200],
+  //       body: SafeArea(
+  //         child: SizedBox.expand(
+  //           child: Column(
+  //             children: [
+  //               Text("Expore Moview Scren $movieId"),
+  //               OutlinedButton(onPressed: (){
+  //                 // notifier.navigateToDashboard();
+  //                 GoRouter.of(context).go(AppRoutes.DASHBOARD);
+  //               }, child: Text("Kembali")
+  //               )
+  //             ],
+  //           )
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+}
+
+class _ExploreMovieScreenState extends ConsumerState<ExploreMovieScreen> {
+  DateTime? _lastPressedAt;
+  
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      backgroundColor: Colors.red[200],
-      body: SafeArea(
-        child: SizedBox.expand(
-          child: Column(
-            children: [
-              Text("Expore Moview Scren $movieId")
-            ],
-          )
+  Widget build(BuildContext context) {
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (bool didPop) async {
+        if (didPop) {
+          return;
+        }
+
+        final currentLocation = GoRouter.of(context).location;
+        
+        // Jika bukan di root dashboard, biarkan default back behavior
+        if (currentLocation != '/dashboard') {
+          context.go('/dashboard');
+          return;
+        }
+
+        // Double tap to exit di halaman dashboard
+        final now = DateTime.now();
+        if (_lastPressedAt == null || 
+            now.difference(_lastPressedAt!) > const Duration(seconds: 2)) {
+          _lastPressedAt = now;
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Tekan sekali lagi untuk keluar'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+          return;
+        }
+        
+        SystemNavigator.pop();
+      },
+      child: Scaffold(
+        backgroundColor: Colors.red[200],
+        body: SafeArea(
+          child: SizedBox.expand(
+            child: Column(
+              children: [
+                Text("Expore Moview Scren ${widget.movieId}"),
+                OutlinedButton(onPressed: (){
+                  // notifier.navigateToDashboard();
+                  GoRouter.of(context).go(AppRoutes.DASHBOARD);
+                }, child: Text("Kembali")
+                )
+              ],
+            )
+          ),
         ),
       ),
     );
   }
+
+  
 }

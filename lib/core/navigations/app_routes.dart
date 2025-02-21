@@ -4,6 +4,7 @@
 class AppRoutes {
   static const String SPLASH = '/splash';
   static const String DASHBOARD = '/dashboard';
+  static const String BOOKMARK = '/bookmark';
   static const String EXPLORE = '/explore';
   static const String DETAIL = '/detail';
 

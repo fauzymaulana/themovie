@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/src/route.dart';
 import 'package:watch_me/core/navigations/provider/dashboard_navigaton_provider.dart';
 import 'package:watch_me/presentation/dashboard/home/home_screen.dart';
 import 'package:watch_me/presentation/dashboard/widgets/bottom_nav_bar.dart';
@@ -8,7 +9,8 @@ import '../../core/navigations/enums/dashboard_routes_enum.dart';
 import 'bookmark/bookmark_screen.dart';
 
 class DashboardScreen extends ConsumerWidget {
-  const DashboardScreen({super.key});
+  final Widget child;
+  const DashboardScreen({super.key, required this.child});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,7 +23,7 @@ class DashboardScreen extends ConsumerWidget {
     };
 
     return Scaffold(
-      body: screenMap[currentTab],
+      body: child,
       bottomNavigationBar: const BottomNavBar(),
     );
   }
