@@ -117,6 +117,7 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
     return SizedBox(
       height: 300,
       child: ListView.builder(
+        addAutomaticKeepAlives: true, // operator to keep alives state when it is not visible on the screen.
         key: PageStorageKey('horizontal-list'),
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,

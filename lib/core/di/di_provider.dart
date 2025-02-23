@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:watch_me/data/data_source/movie_local_data_source.dart';
 import 'package:watch_me/domain/usecases/get_all_genre_usecase.dart';
-import 'package:watch_me/domain/usecases/get_genres_usecase.dart';
 import 'package:watch_me/domain/usecases/get_now_playing_usecase.dart';
 
 import '../../data/data_source/remote_data_source.dart';
@@ -42,11 +41,6 @@ final genresMovieRepositoryProvider = Provider<GenresMovieRepository>((ref) {
 final getNowPlayingUsecaseProvider = Provider<GetNowPlayingUsecase>((ref) {
   final repository = ref.read(nowPlayingMovieRepositoryProvider);
   return GetNowPlayingUsecaseImpl(repository);
-});
-
-final getGenresUsecaseProvider = Provider<GetGenresUsecase>((ref) {
-  final repository = ref.read(genresMovieRepositoryProvider);
-  return GetGenresUsecaseImpl(repository);
 });
 
 final getAllGenreUsecaseProvider = Provider<GetAllGenreUsecase>((ref) {
