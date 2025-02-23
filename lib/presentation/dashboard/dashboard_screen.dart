@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/src/route.dart';
 import 'package:watch_me/core/navigations/provider/dashboard_navigaton_provider.dart';
 import 'package:watch_me/presentation/dashboard/home/home_screen.dart';
 import 'package:watch_me/presentation/dashboard/widgets/bottom_nav_bar.dart';

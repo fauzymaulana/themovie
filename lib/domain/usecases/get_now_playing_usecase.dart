@@ -1,5 +1,4 @@
 import 'package:watch_me/domain/entities/movie_entity.dart';
-import 'package:watch_me/domain/mapper/base_paginate_mapper.dart';
 import 'package:watch_me/domain/mapper/date_mapper.dart';
 import 'package:watch_me/domain/mapper/movie_mapper.dart';
 import '../../core/utilities/result_state.dart';

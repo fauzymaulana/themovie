@@ -1,11 +1,16 @@
-import 'package:isar/isar.dart';
 
-part 'genre_isar.g.dart';
+// part 'genre_isar.g.dart';
 
-@embedded
-// @collection
-class GenreIsar {
-  int? id;
+// // @collection
+// @embedded
+// class GenreIsar {
+//   // Id id = Isar.autoIncrement;
+//   int? genreId;
   
-  String? genre;
-}
+//   String? genre;
+
+//   GenreIsar({
+//     this.genre,
+//     this.genreId
+//   });
+// }

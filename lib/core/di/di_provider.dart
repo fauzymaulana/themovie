@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:watch_me/data/data_source/movie_local_data_source.dart';
+import 'package:watch_me/domain/usecases/get_all_genre_usecase.dart';
 import 'package:watch_me/domain/usecases/get_genres_usecase.dart';
 import 'package:watch_me/domain/usecases/get_now_playing_usecase.dart';
 
@@ -20,6 +22,10 @@ final remoteDataSourceProvider = Provider<RemoteDataSource>((ref) {
   return RemoteDataSourceImpl(dioClient);
 });
 
+final localDataSourceProvider = Provider<MovieLocalDataSource>((ref) {
+  return MovieLocalDataSource();
+});
+
 /// Injection Repository
 final nowPlayingMovieRepositoryProvider = Provider<NowPlayingMovieRepository>((ref) {
   final remoteDataSource = ref.read(remoteDataSourceProvider);
@@ -28,7 +34,8 @@ final nowPlayingMovieRepositoryProvider = Provider<NowPlayingMovieRepository>((r
 
 final genresMovieRepositoryProvider = Provider<GenresMovieRepository>((ref) {
   final remoteDataSource = ref.read(remoteDataSourceProvider);
-  return GenresMovieRepositoryImpl(remoteDataSource);
+  final localDataSource = ref.read(localDataSourceProvider);
+  return GenresMovieRepositoryImpl(remoteDataSource, localDataSource);
 });
 
 /// Injection Usecase
@@ -40,4 +47,9 @@ final getNowPlayingUsecaseProvider = Provider<GetNowPlayingUsecase>((ref) {
 final getGenresUsecaseProvider = Provider<GetGenresUsecase>((ref) {
   final repository = ref.read(genresMovieRepositoryProvider);
   return GetGenresUsecaseImpl(repository);
+});
+
+final getAllGenreUsecaseProvider = Provider<GetAllGenreUsecase>((ref) {
+  final repository = ref.read(genresMovieRepositoryProvider);
+  return GetAllGenreUsecaseImpl(repository);
 });

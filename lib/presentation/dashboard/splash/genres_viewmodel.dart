@@ -16,4 +16,9 @@ class GenresViewmodel extends StateNotifier<ResultState<GenresEntity>> {
     debugPrint("Genres: ${result.data?.genres?.toList()}");
     state = result;
   }
+
+  // Future<void> fetchGenres() async {
+  //   state = Loading();
+  //   final result = await 
+  // }
 }

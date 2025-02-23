@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:watch_me/core/config/theme/app_colors.dart';
 
 class CircularBorderButton extends StatelessWidget {

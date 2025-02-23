@@ -7,7 +7,6 @@ import 'package:watch_me/core/navigations/app_routes.dart';
 import 'package:watch_me/presentation/dashboard/widgets/card_horizontal_movie.dart';
 import 'package:watch_me/presentation/dashboard/widgets/circular_border_button.dart';
 
-import '../../../core/navigations/provider/navigation_provider.dart';
 import '../../../core/utilities/result_state.dart';
 import '../../../domain/entities/base_paginate.dart';
 import '../../../domain/entities/movie_entity.dart';

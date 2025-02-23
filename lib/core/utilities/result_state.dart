@@ -7,6 +7,7 @@ sealed class ResultState<T> {
 class Loading<T> extends ResultState<T> {}
 
 class Success<T> extends ResultState<T> {
+  @override
   final T data;
   Success(this.data);
 }

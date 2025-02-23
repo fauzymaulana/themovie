@@ -16,9 +16,9 @@ class GetGenresUsecaseImpl implements GetGenresUsecase {
   @override
   Future<ResultState<GenresEntity>> execute() async {
     try {
-      final response = await _genresMovieRepository.getGenres();
+      final response = await _genresMovieRepository.fetchGenres();
       final result = GenresEntity(
-        genres: response.genres.map((e) => e.toGenreEntities()).toList(),
+        genres: response.genres.map((e) => e.toGenreEntity()).toList(),
       );
 
       return Success(result);

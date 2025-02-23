@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:watch_me/core/navigations/app_router.dart';
 
-import 'core/navigations/provider/navigation_provider.dart';
 
 
 void main() {
