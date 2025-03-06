@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'genre_response.g.dart';
+part 'generated/genre_response.g.dart';
 
 @JsonSerializable()
 class GenreResponse {

@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'date_response.g.dart';
+part 'generated/date_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
 class DateResponse {

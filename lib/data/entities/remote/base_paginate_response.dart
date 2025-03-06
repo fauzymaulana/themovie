@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:watch_me/data/entities/remote/date_response.dart';
 
-part 'base_paginate_response.g.dart';
+part 'generated/base_paginate_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
 class BasePaginateResponse<T> 

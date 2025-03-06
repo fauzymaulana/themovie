@@ -1,5 +1,5 @@
 class MovieEntity {
-  final int id;
+  final int movieId;
   final bool adult;
   final String title;
   final String overview;
@@ -8,16 +8,16 @@ class MovieEntity {
   final String releaseDate;
   final double voteAverage;
   final double popularity;
-  final List<int> genreIds;
+  final List<String> genres;
   final int voteCount;
 
   MovieEntity({
-    required this.id,
+    required this.movieId,
     required this.title,
     required this.adult,
     required this.overview,
     required this.popularity,
-    required this.genreIds,
+    required this.genres,
     this.posterPath,
     this.backdropPath,
     required this.releaseDate,

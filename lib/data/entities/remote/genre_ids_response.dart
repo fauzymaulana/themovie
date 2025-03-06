@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'genre_response.dart';
 
-part 'genre_ids_response.g.dart';
+part 'generated/genre_ids_response.g.dart';
 
 @JsonSerializable()
 class GenreIdsResponse {

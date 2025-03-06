@@ -136,7 +136,7 @@ class _MovieHorizontalState extends ConsumerState<MovieHorizontal> {
   }
 
   void _onMovieTapped(MovieEntity movie) {
-    GoRouter.of(context).go('${AppRoutes.DETAIL}/${movie.id.toString()}');
+    GoRouter.of(context).go('${AppRoutes.DETAIL}/${movie.movieId.toString()}');
   }
   
 }

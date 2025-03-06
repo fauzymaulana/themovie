@@ -10,7 +10,7 @@ import '../../core/config/networking/dio_client.dart';
 abstract class RemoteDataSource {
   Future<BasePaginateResponse<MovieResponse>> getNowPlayingMovies<T>();
   Future<GenreIdsResponse> getGenres();
-  // Future<BasePaginateResponse<T>> getTopRatedMovies<T>();
+  Future<BasePaginateResponse<MovieResponse>> getPopularMovies<T>({required int page});
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -52,9 +52,28 @@ class RemoteDataSourceImpl implements RemoteDataSource {
       throw DioErrorHandler.handleDioError(e);
     }
   }
+  
+  @override
+  Future<BasePaginateResponse<MovieResponse>> getPopularMovies<T>({required int page}) async {
+    try {
+      final response = await _dioClient.dio.get(
+        ApiPath.POPULAR,
+        queryParameters: {
+          'page': page,
+        },
+      );
 
-  // @override
-  // Future<BasePaginateResponse<T>> getTopRatedMovies<T>() {
-  //   throw UnimplementedError();
-  // }
+      final dynamic data = response.data;
+
+      return BasePaginateResponse.fromJson(
+        data,
+        (json) => MovieResponse.fromJson(json as Map<String, dynamic>),
+      );
+      
+    } on DioException catch (e) {
+      throw DioErrorHandler.handleDioError(e);
+    }
+  }
+
+  
 }
